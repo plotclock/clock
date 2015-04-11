@@ -1,3 +1,6 @@
+#ifndef _CLOCK_H
+#define _CLOCK_H
+time_t currentTime;
 double giveR(double x, double y);
 double giveTheta(double x, double y);
 void goTO(double x, double y);
@@ -15,10 +18,11 @@ void make6(void);
 void make7(void);
 void make8(void);
 void make9(void);
-void make:(void);
-void setTime(int h, int m, int s);
+void makeColon(void);
+void initTime(int h, int m, int s);
 void updateTime(int s); // see if arduino has default library
 void printTime(void);
-void erase(void);
+void eraseText(void);
 void penUp(void);
 void penDown(void);
+#endif
