@@ -1,13 +1,19 @@
 #ifndef _CLOCK_H
 #define _CLOCK_H
+//variables
 time_t currentTime;
+double currX, currY, currR, curTheta;
+
+//functions
 double giveR(double x, double y);
 double giveTheta(double x, double y);
 void goTO(double x, double y);
 void moveX(double x);
 void moveY(double y);
+void moveR(double r);
+void moveTheta(double t);
 void currentPosition(void);
-void make(char); // input 0, 1, 2...9 or : to draw it (use switch)
+void make(char); // input 0, 1, 2...9 or : to draw it
 void make0(void);
 void make1(void);
 void make2(void);
