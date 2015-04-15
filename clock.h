@@ -2,7 +2,7 @@
 #define _CLOCK_H
 //variables
 time_t currentTime;
-double currX, currY, currR, curTheta;
+double currX, currY, currR, curTheta, currPhi;
 
 //functions
 double giveR(double x, double y);

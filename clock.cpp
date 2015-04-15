@@ -107,6 +107,173 @@ void make(char ch)
     case ':' :
     makeColon();
 }
+void make0()
+{
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	//pendown
+	moveX(x2);
+	moveY(y6);
+	moveX(x5);
+	moveY(y1);
+}
+
+void make1()
+{
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	moveX(x2);
+	//pendown
+	moveY(y6);
+
+}
+
+void make2()
+{
+
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	//pendown
+	moveX(x2);
+	moveY(y4);
+	moveX(x3);
+	moveY(y5);
+	moveX(x6);
+
+}
+
+void make3()
+{
+
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	//pendown
+	moveX(x2);
+	moveY(y4);
+	moveX(x3);
+
+	//penup
+	moveX(x4);
+
+	//pendown
+	moveY(y6);
+	moveX(x5);
+
+}
+
+
+void make4()
+{
+
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	//pendown
+	moveY(y3);
+	moveX(x4);
+
+	//penup
+	moveY(y2);
+
+	//pendown
+	moveY(y6);
+
+
+}
+
+void make5()
+{
+
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	moveX(x2);
+
+	//pendown
+	moveX(x1);
+	moveY(y3);
+	moveX(x4);
+	moveY(y6);
+	moveX(x5);
+
+}
+
+
+void make6()
+{
+
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	moveX(x2);
+
+	//pendown
+	moveX(x1);
+	moveY(y5);
+	moveX(x6);
+	moveY(y4);
+	moveX(x3);
+}
+
+
+void make7()
+{
+
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	moveX(x2);
+	moveY(y6);
+}
+
+void make()
+{
+
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	moveY(y3);
+
+	//pendown
+	moveY(y5);
+	moveX(x6);
+	moveY(y4);
+	moveX(x3);
+	moveY(y1);
+	moveX(x2);
+	moveY(y4);
+}
+
+void make9()
+{
+
+	//penup
+	moveX(x1);	//bring the pen to initial
+	moveY(y1);	// start point of number
+
+	moveX(x2);
+	moveY(y4);
+
+	//pendown
+	moveX(x3);
+	moveY(y1);
+	moveX(x2);
+	moveY(y6);
+}
+
 void initTime(int h, int m, int s)
 {
     //Part of the initialisation settings; Setup time at startup of the bot.
