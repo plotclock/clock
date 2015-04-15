@@ -2,14 +2,14 @@
 #define _CLOCK_H
 //variables
 time_t currentTime;
-double currX, currY, currR, curTheta, currPhi;
+double currX, currY, currR, curTheta, currPhi, L;
 
 //functions
 double giveR(double x, double y);
 double giveTheta(double x, double y);
 void goTO(double x, double y);
-void moveX(double x);
-void moveY(double y);
+void moveX(double X);
+void moveY(double X);
 void moveR(double r);
 void moveTheta(double t);
 void currentPosition(void);

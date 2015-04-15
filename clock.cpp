@@ -1,6 +1,6 @@
 #include "clock.h"
 #include <math.h>
-#include "Time.h"
+#include <Time.h>
 double giveR(double x, double y)
 {
     //Given the x and y coordinates, this function will return the value of r in radial coordinates.
@@ -12,6 +12,11 @@ double giveTheta(double x, double y)
     if(x!=0)
         return atan(y/x);
     else return 90;
+}
+void goTO(double x, double y)
+{
+    moveX(x);
+    moveY(y);
 }
 void moveX(double X)
 {
@@ -305,4 +310,24 @@ void updateTime(int s)
     initTime(hr, minut, sec);
     currentTime=now();
 }
-
+void printTime(void)
+{
+    int sec=second();
+    int minut=minute();
+    int hr=hour();
+    int ch1, ch2, ch3, ch4;
+    if(hr<10)
+    {
+        ch1=0;
+    }
+    else
+        ch1=hr/10;
+    ch2=hr%10;
+    if(minut<10)
+    {
+        ch3=0;
+    }
+    else
+        ch3=minut/10;
+    ch4=minut%10;
+}
