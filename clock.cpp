@@ -13,6 +13,74 @@ double giveTheta(double x, double y)
         return atan(y/x);
     else return 90;
 }
+void moveX(double X)
+{
+  double x_in,y_in,i,count,r,theta;//assuming X,Y to be instance or global variables
+  x_in=currX;
+  y_in=currY;
+  count=0;
+  r=getR(x_in,y_in);//changing to polar co-ordinates
+  theta=getTheta(x_in,y_in);//changing to polar co-ordinates
+  dx=dr*cos(theta)-r*dtheta*sin(theta);//relation b/w dx,dr and dtheta
+  if(x_in<X)
+    for(i=x_in;i<=X;i+=dx)//right to left
+    {
+      int mov=pow(-1,count++)*dr;
+      moveR(mov);
+      moveTheta(dtheta);
+      x_in+=dx;
+      theta=getTheta(x_in,y_in);
+      r=getR(x_in,y_in);
+      dx=dr*cos(theta)-r*dtheta*sin(theta);
+    }
+   else
+    for(i=x_in,count=0;i>=X;i-=dx)//left to right
+    {
+      int mov=pow(-1,count++)*dr;
+      moveR(mov);
+      moveTheta(-1*dtheta);
+      x_in-=dx;
+      theta=getTheta(x_in,y_in);
+      r=getR(x_in,y_in);
+      dx=dr*cos(theta)-r*dtheta*sin(theta);
+    }
+   x_in+=dx;
+   currX=x_in;
+}
+void moveY(double X)
+{
+  double x_in,y_in,i,count,r,theta;//assuming X,Y to be instance or global variables
+  x_in=currX;
+  y_in=currY;
+  count=0;
+  r=getR(x_in,y_in);//changing to polar co-ordinates
+  theta=getTheta(x_in,y_in);//changing to polar co-ordinates
+  dy=dr*sin(theta)+r*dtheta*cos(theta);//relation b/w dy,dr and dtheta
+  if(y_in<Y)
+    for(i=y_in;i<=Y;i+=dy)//up to down
+    {
+      int mov=pow(-1,count++)*dtheta;
+      moveR(dr);
+      moveTheta(mov);
+      y_in+=dy;
+      theta=getTheta(x_in,y_in);
+      r=getR(x_in,y_in);
+      dy=dr*sin(theta)+r*dtheta*cos(theta);
+    }
+   else
+    for(i=y_in,count=0;i>=Y;i-=dy)//down to up
+    {
+      int mov=pow(-1,count++)*dtheta;
+      moveR(dr);
+      moveTheta(-1*mov);
+      y_in-=dy;
+      theta=getTheta(x_in,y_in);
+      r=getR(x_in,y_in);
+      dy=dr*sin(theta)+r*dtheta*cos(theta);
+    }
+   y_in+=dy;
+   currY=y_in;
+}
 void make(char ch)
 {
     //takes in a character input and calls the function to print that particular character.
