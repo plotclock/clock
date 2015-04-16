@@ -1,8 +1,10 @@
 #ifndef _CLOCK_H
 #define _CLOCK_H
 //variables
-time_t currentTime;
-double currX, currY, currR, curTheta, currPhi, L;
+double currX, currY, currR, curTheta, currPhi, dx, dy, dphi;
+const double dtheta=1.5;
+const double dr=0.001;
+const double L=0.15;//length of arm is 15 cm
 
 //functions
 double giveR(double x, double y);
