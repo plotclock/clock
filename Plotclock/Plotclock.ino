@@ -12,11 +12,11 @@ Servo servoPenupdown;
 
 double x1, x2, x3, x4, x5, x6, y1, y2, y3, y4, y5, y6, margin, d;
 
-int interruptCounter;
+double interruptCounter;
 int sec, minut, hr;
 int servoPenupdownpin=11;
 
-ISR (TIMER1_COMPA_vect)
+ISR (TIMER0_COMPA_vect)
 {
     interruptCounter++;
 }
@@ -55,13 +55,13 @@ void initTime(int h, int m, int s)
     setTime(h, m, s, 1, 1, 2015);
     //Set the current time in this function before programming to the current time.
 }
-void updateTime(int s)
+void updateTime(long s)
 {
     //Setup timer and s is length of timer.
     //This function will be called at the end of every iteration of while loop. Will set the current time in the time variable.
-    int sec2=second()+s;
-    int minut2=minute();
-    int hr2=hour();
+    long sec2=second()+s;
+    long minut2=minute();
+    long hr2=hour();
     while(sec2>59)
     {
         minut2++;
@@ -457,19 +457,19 @@ void setup()
     servoPhi.attach(9);
     servoTheta.attach(10);
     servoPenupdown.attach(11);
-    initTime(14, 15, 0);//time at which ic is bing swtiched on. HHMMSS in 24 hr format.
-    //set timer1 interrupt at 1Hz
-    TCCR1A = 0;// set entire TCCR1A register to 0
-    TCCR1B = 0;// same for TCCR1B
-    TCNT1  = 0;//initialize counter value to 0
-    // set compare match register for 1hz increments
-    OCR1A = 15624;// = (16*10^6) / (1*1024) - 1 (must be <65536)
+    initTime(14, 16, 0);//time at which ic is bing swtiched on. HHMMSS in 24 hr format.
+  //set timer0 interrupt at 2kHz
+    TCCR0A = 0;// set entire TCCR0A register to 0
+    TCCR0B = 0;// same for TCCR0B
+    TCNT0  = 0;//initialize counter value to 0
+    // set compare match register for 2khz increments
+    OCR0A = 124;// = (16*10^6) / (2000*64) - 1 (must be <256)
     // turn on CTC mode
-    TCCR1B |= (1 << WGM12);
-    // Set CS10 and CS12 bits for 1024 prescaler
-    TCCR1B |= (1 << CS12) | (1 << CS10);
+    TCCR0A |= (1 << WGM01);
+    // Set CS01 and CS00 bits for 64 prescaler
+    TCCR0B |= (1 << CS01) | (1 << CS00);   
     // enable timer compare interrupt
-    TIMSK1 |= (1 << OCIE1A);
+    TIMSK0 |= (1 << OCIE0A);
     interruptCounter=0;
     sei();
 }
@@ -485,7 +485,7 @@ void loop()
     {
         delay(10);
     }
-    updateTime(interruptCounter);
+    updateTime(long(interruptCounter/2000));
     interruptCounter=0;
 }
 
